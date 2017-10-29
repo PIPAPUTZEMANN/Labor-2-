@@ -50,21 +50,22 @@ public class Lotto {
 		for (int s = 0; s < SpielerZahlen.length; s++) {
 			System.out.println("Bitte die " + (s + 1) + ". Zahl eingeben!");
 			ZwischenSpeicher = In.readInt();
-			while(bereich==true){
-			if(ZwischenSpeicher <= 49 && ZwischenSpeicher >= 1) {
+			while (bereich == true) {
+				if (ZwischenSpeicher <= 49 && ZwischenSpeicher >= 1) {
 
-				SpielerZahlen[s] = ZwischenSpeicher;
-				bereich=false;
-			
+					SpielerZahlen[s] = ZwischenSpeicher;
+					bereich = false;
+
+				} else {
+					System.out.println(
+							"Die eingegebene Zahl ist nicht gültig! Bitte die " + (s + 1) + ". nochmal eingeben!");
+					ZwischenSpeicher = In.readInt();
+					bereich = true;
+
+				}
+
 			}
-			else{
-				System.out.println("Die eingegebene Zahl ist nicht gültig! Bitte die " +(s+1)+ ". nochmal eingeben!");
-				ZwischenSpeicher = In.readInt();
-				bereich=true;
-			
-			}
-			
-		}}
+		}
 		return SpielerZahlen;
 
 	}
