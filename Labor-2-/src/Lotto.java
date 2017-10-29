@@ -66,7 +66,7 @@ public class Lotto {
 
 			}
 		}
-		return SpielerZahlen;
+		return SpielerZahlen;//test
 
 	}
 }
