@@ -6,7 +6,7 @@ public class Lotto {
 
 		System.out.println(drawLotteryNumber());
 		System.out.println(Arrays.toString(drawLottery()));
-		readPlayerTip();
+		System.out.println(Arrays.toString(readPlayerTip()));
 		
 	}
 
@@ -77,7 +77,15 @@ public class Lotto {
 			SpielerZahlen[s] = ZwischenSpeicher;
 
 		}
-		return SpielerZahlen;// test
+		return SpielerZahlen;
 
+	}
+	public static int[] checkPlayerTip(int[] tip,int[] lotterNumbers){
+		
+		
+	
+		
+		
+		
 	}
 }
