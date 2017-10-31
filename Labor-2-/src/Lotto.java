@@ -3,11 +3,12 @@ import java.util.Arrays;
 public class Lotto {
 
 	public static void main(String[] args) {
-
-		System.out.println(drawLotteryNumber());
+		int[] test = { 1, 2, 3, 4, 5, 6 };
+		// System.out.println(drawLotteryNumber());
 		System.out.println(Arrays.toString(drawLottery()));
-		System.out.println(Arrays.toString(readPlayerTip()));
-		
+		// System.out.println(Arrays.toString(readPlayerTip()));
+		System.out.println(checkPlayerTip(readPlayerTip(), test));
+
 	}
 
 	public static int drawLotteryNumber() {
@@ -52,6 +53,16 @@ public class Lotto {
 			System.out.println("Bitte die " + (s + 1) + ". Zahl eingeben!");
 			ZwischenSpeicher = In.readInt();
 
+			for (int i = 0; i < s; i++) {
+				while (ZwischenSpeicher == SpielerZahlen[i]) {
+
+					System.out.println("Zahl Doppelt! Bitte erneut die " + (i + 2) + ".eingeben!");
+					ZwischenSpeicher = In.readInt();
+
+					i = 0;
+				}
+			}
+
 			if (ZwischenSpeicher <= 49 && ZwischenSpeicher >= 1) {
 
 				bereich = false;
@@ -80,12 +91,21 @@ public class Lotto {
 		return SpielerZahlen;
 
 	}
-	public static int[] checkPlayerTip(int[] tip,int[] lotterNumbers){
-		
-		
-	
-		
-		
-		
+
+	public static int checkPlayerTip(int[] tip, int[] lotteryNumbers) {
+		int richtigeZahlen = 0;
+
+		System.out.println(Arrays.toString(tip));
+		System.out.println(Arrays.toString(lotteryNumbers));
+		for (int j = 0; j < tip.length; j++) {
+			for (int h = 0; h < lotteryNumbers.length; h++) {
+				if (tip[j] == lotteryNumbers[h]) {
+
+					richtigeZahlen++;
+				}
+			}
+
+		}
+		return richtigeZahlen;
 	}
 }
