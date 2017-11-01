@@ -57,7 +57,6 @@ public class Lotto {
 		int[][] SpielerZahlen;
 		SpielerZahlen = new int[anzahlSpieler][6];
 		int ZwischenSpeicher;
-
 		boolean bereich = true;
 
 		for (int s = 0; s < 6; s++) {
