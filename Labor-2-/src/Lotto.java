@@ -4,16 +4,37 @@ public class Lotto {
 
 	public static void main(String[] args) {
 		int anzahlSpieler = 0;
+		int [] aktuelleLottoZahlen=drawLottery();
+		int k=0;
+		
+		
 
 		System.out.println("Anzahl der gewünschten Spieler eingeben!");
 		anzahlSpieler = In.readInt();
-
+		int [][]aa=new int [anzahlSpieler][6];
 		for (int as = 0; as < anzahlSpieler; as++) {
 			System.out.println("Spieler " + (as + 1) + " bitte seinen Lottoschein ausfüllen!");
-			int[][] aa = readPlayerTip(anzahlSpieler);
-
+			aa[as]= readPlayerTip(anzahlSpieler);
+			
 		}
-	}
+			
+			
+			while(checkPlayerTip(aa,aktuelleLottoZahlen)!=6){
+				
+				aktuelleLottoZahlen=drawLottery();
+				k++;
+				
+			}
+			System.out.println(k);
+			System.out.println(Arrays.toString(bubblesort(aktuelleLottoZahlen)));
+			
+			for(int row=0;row<aa.length;row++){
+				for(int column=0;column<aa[row].length;column++){
+			System.out.print(aa[row][column]+"\t");}
+				
+			System.out.println();}
+		}
+	
 
 	// int[] test = { 1, 2, 3, 4, 5, 6 };
 	// System.out.println(drawLotteryNumber());
@@ -52,19 +73,20 @@ public class Lotto {
 		return ZiehungZahlen;//
 	}
 
-	public static int[][] readPlayerTip(int anzahlSpieler) {
+	public static int[] readPlayerTip(int anzahlSpieler) {
 
-		int[][] SpielerZahlen;
-		SpielerZahlen = new int[anzahlSpieler][6];
+		int[] SpielerZahlen;
+		SpielerZahlen = new int [6];
 		int ZwischenSpeicher;
 		boolean bereich = true;
-
+		
+		
 		for (int s = 0; s < 6; s++) {
 			System.out.println("Bitte die " + (s + 1) + ". Zahl eingeben!");
 			ZwischenSpeicher = In.readInt();
-			for (int spielerNummer = 0; spielerNummer < anzahlSpieler; spielerNummer++) {
+			
 				for (int i = 0; i < s; i++) {
-					while (ZwischenSpeicher == SpielerZahlen[spielerNummer][i]) {
+					while (ZwischenSpeicher == SpielerZahlen[i]) {
 
 						System.out.println("Zahl Doppelt! Bitte erneut die " + (i + 2) + ".eingeben!");
 						ZwischenSpeicher = In.readInt();
@@ -95,28 +117,64 @@ public class Lotto {
 
 				}
 
-				SpielerZahlen[spielerNummer][s] = ZwischenSpeicher;
+				SpielerZahlen[s] = ZwischenSpeicher;
 
 			}
-		}
+		
+		
+		
+		
 		return SpielerZahlen;
-
 	}
 
-	public static int checkPlayerTip(int[] tip, int[] lotteryNumbers) {
+	public static int checkPlayerTip(int[][] tip, int[] lotteryNumbers) {
 		int richtigeZahlen = 0;
 
-		// System.out.println(Arrays.toString(tip));
-		// System.out.println(Arrays.toString(lotteryNumbers));
-		for (int j = 0; j < tip.length; j++) {
-			for (int h = 0; h < lotteryNumbers.length; h++) {
-				if (tip[j] == lotteryNumbers[h]) {
+		
+		
+		for(int row=0;row<tip.length;row++){
+			for(int column=0;column<tip[row].length;column++){
+				for (int h = 0; h < lotteryNumbers.length; h++) {
+					if (tip[row][column] == lotteryNumbers[h]) {
 
-					richtigeZahlen++;
+						richtigeZahlen++;
 				}
 			}
-
+			
+		}
 		}
 		return richtigeZahlen;
+	}
+		// System.out.println(Arrays.toString(tip));
+		// System.out.println(Arrays.toString(lotteryNumbers));
+//		for (int j = 0; j < tip.length; j++) {
+//			for (int h = 0; h < lotteryNumbers.length; h++) {
+//				if (tip[j] == lotteryNumbers[h]) {
+//
+//					richtigeZahlen++;
+//				}
+//			}
+//
+//		}
+//		return richtigeZahlen;
+//	}
+	
+	public static int[] bubblesort(int[] Lottozahlen) {
+		int n = 6;
+		int buffer;
+		do {
+			int newn = 1;
+			for (int i = 0; i < n - 1; ++i) {
+				if (Lottozahlen[i] > Lottozahlen[i + 1]) {
+					//Werte der Arrays tauschen
+					buffer = Lottozahlen[i];
+					Lottozahlen[i] = Lottozahlen[i + 1];
+					Lottozahlen[i + 1] = buffer;
+					newn = i + 1;
+				}
+			}
+			n = newn;
+		} while (n > 1);
+		return Lottozahlen;
 	}
 }
