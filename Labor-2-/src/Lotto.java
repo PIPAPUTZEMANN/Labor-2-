@@ -140,7 +140,7 @@ public class Lotto {
 	public static int checkPlayerTip(int[][] tip, int[] lotteryNumbers, int spielerNummer) {
 		int richtigeZahlen = 0;
 
-		// for(int row=0;row<tip.length;row++){
+		
 		for (int column = 0; column < tip[spielerNummer].length; column++) {
 			for (int h = 0; h < lotteryNumbers.length; h++) {
 				if (tip[spielerNummer][column] == lotteryNumbers[h]) {
