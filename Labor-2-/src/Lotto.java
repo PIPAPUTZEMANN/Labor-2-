@@ -7,10 +7,11 @@ public class Lotto {
 		int[] aktuelleLottoZahlen = drawLottery();
 		int k = 0;
 		boolean zustand = true;
-		int spieler=0;
+		int spieler = 0;
 
 		System.out.println("Anzahl der gewünschten Spieler eingeben!");
 		anzahlSpieler = In.readInt();
+		int[][] tabelle = new int[anzahlSpieler][8];
 		int[][] aa = new int[anzahlSpieler][6];
 		for (int as = 0; as < anzahlSpieler; as++) {
 			System.out.println("Spieler " + (as + 1) + " bitte seinen Lottoschein ausfüllen!");
@@ -19,25 +20,47 @@ public class Lotto {
 		}
 
 		while (zustand == true) {
-			int spielerNummer=0;
+			int spielerNummer = 0;
 			k++;
-			
-			aktuelleLottoZahlen=drawLottery();
+
+			aktuelleLottoZahlen = drawLottery();
 			for (spielerNummer = 0; spielerNummer < anzahlSpieler; spielerNummer++) {
 
 				if (checkPlayerTip(aa, aktuelleLottoZahlen, spielerNummer) == 6) {
-					
-					spieler=spielerNummer;
+					tabelle[spielerNummer][7]++;
+					spieler = spielerNummer;
 					zustand = false;
+				} else if (checkPlayerTip(aa, aktuelleLottoZahlen, spielerNummer) == 5) {
+
+					tabelle[spielerNummer][6]++;
+
+				} else if (checkPlayerTip(aa, aktuelleLottoZahlen, spielerNummer) == 4) {
+
+					tabelle[spielerNummer][5]++;
+				}
+
+				else if (checkPlayerTip(aa, aktuelleLottoZahlen, spielerNummer) == 3) {
+
+					tabelle[spielerNummer][4]++;
+				} else if (checkPlayerTip(aa, aktuelleLottoZahlen, spielerNummer) == 2) {
+
+					tabelle[spielerNummer][3]++;
+				}
+
+				else if (checkPlayerTip(aa, aktuelleLottoZahlen, spielerNummer) == 1) {
+
+					tabelle[spielerNummer][2]++;
+				}
+
+				else if (checkPlayerTip(aa, aktuelleLottoZahlen, spielerNummer) == 0) {
+
+					tabelle[spielerNummer][1]++;
 				}
 			}
 
-			
-			
-			
 		}
-		
-		System.out.println("Spieler "+(spieler+1)+" hat gewonnen!");
+
+		System.out.println("Spieler " + (spieler + 1) + " hat gewonnen!");
 		System.out.println(k);
 		System.out.println(Arrays.toString(bubblesort(aktuelleLottoZahlen)));
 
@@ -48,6 +71,15 @@ public class Lotto {
 
 			System.out.println();
 		}
+
+		for (int row = 0; row < tabelle.length; row++) {
+			for (int column = 0; column < tabelle[row].length; column++) {
+				System.out.print(tabelle[row][column] + "\t");
+			}
+
+			System.out.println();
+		}
+
 	}
 
 	// int[] test = { 1, 2, 3, 4, 5, 6 };
@@ -120,8 +152,7 @@ public class Lotto {
 
 			while (bereich == true) {
 
-				System.err
-						.println("Die eingegebene Zahl ist nicht gültig! Bitte die eine andere Zahl eingeben!");
+				System.err.println("Die eingegebene Zahl ist nicht gültig! Bitte die eine andere Zahl eingeben!");
 				ZwischenSpeicher = In.readInt();
 
 				if (ZwischenSpeicher <= 49 && ZwischenSpeicher >= 1) {
@@ -140,7 +171,6 @@ public class Lotto {
 	public static int checkPlayerTip(int[][] tip, int[] lotteryNumbers, int spielerNummer) {
 		int richtigeZahlen = 0;
 
-		
 		for (int column = 0; column < tip[spielerNummer].length; column++) {
 			for (int h = 0; h < lotteryNumbers.length; h++) {
 				if (tip[spielerNummer][column] == lotteryNumbers[h]) {
@@ -153,19 +183,6 @@ public class Lotto {
 
 		return richtigeZahlen;
 	}
-	// System.out.println(Arrays.toString(tip));
-	// System.out.println(Arrays.toString(lotteryNumbers));
-	// for (int j = 0; j < tip.length; j++) {
-	// for (int h = 0; h < lotteryNumbers.length; h++) {
-	// if (tip[j] == lotteryNumbers[h]) {
-	//
-	// richtigeZahlen++;
-	// }
-	// }
-	//
-	// }
-	// return richtigeZahlen;
-	// }
 
 	public static int[] bubblesort(int[] Lottozahlen) {
 		int n = 6;
