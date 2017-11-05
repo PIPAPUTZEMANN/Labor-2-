@@ -8,17 +8,21 @@ public class Lotto {
 		int k = 0;
 		boolean zustand = true;
 		int spieler = 0;
+		int geber=1;
+		
 
 		System.out.println("Anzahl der gewünschten Spieler eingeben!");
 		anzahlSpieler = In.readInt();
 		int[][] tabelle = new int[anzahlSpieler][8];
 		int[][] aa = new int[anzahlSpieler][6];
+		
 		for (int as = 0; as < anzahlSpieler; as++) {
 			System.out.println("Spieler " + (as + 1) + " bitte seinen Lottoschein ausfüllen!");
 			aa[as] = readPlayerTip(anzahlSpieler);
+			
 
 		}
-
+		System.out.println("Das Spiel läuft....Bitte warten!");
 		while (zustand == true) {
 			int spielerNummer = 0;
 			k++;
@@ -59,27 +63,46 @@ public class Lotto {
 			}
 
 		}
-
-		System.out.println("Spieler " + (spieler + 1) + " hat gewonnen!");
-		System.out.println(k);
-		System.out.println(Arrays.toString(bubblesort(aktuelleLottoZahlen)));
-
-		for (int row = 0; row < aa.length; row++) {
-			for (int column = 0; column < aa[row].length; column++) {
-				System.out.print(aa[row][column] + "\t");
-			}
-
-			System.out.println();
+		
+		
+		
+		for(int reihe=0;reihe<anzahlSpieler;reihe++){
+			
+			tabelle[reihe][0]=geber++;
+		
 		}
+		
 
+	
+	
+		
+
+
+		System.out.println("Spieler     | 0 Richtige | 1 Richtig  | 2 Richtige | 3 Richtige | 4 Richtige | 5 Richtige | 6 Richtige |");
+		System.out.print("--------------------------------------------------------------------------------------------------------\n");
 		for (int row = 0; row < tabelle.length; row++) {
 			for (int column = 0; column < tabelle[row].length; column++) {
-				System.out.print(tabelle[row][column] + "\t");
+			
+				System.out.printf("%12d|",tabelle[row][column]);
 			}
 
 			System.out.println();
 		}
+		
+		System.out.print("--------------------------------------------------------------------------------------------------------\n");
+		System.out.printf("Es musste %d gezogen werden bis ein Spieler gewonnen hat!\n",k);
+		System.out.println("Spieler " + (spieler + 1) + " hat gewonnen!\n");
+		System.out.println("Die Lottozahlen lauten "+Arrays.toString(bubblesort(aktuelleLottoZahlen))+"!\n");
+		for (int row = 0; row < aa.length; row++) {
+			System.out.println("Lottoschein von Spieler "+(row+1)+"!\n");
+		for (int column = 0; column < aa[row].length; column++) {
+			
+			System.out.print(aa[row][column] + "\t");
+		}
 
+		System.out.println();
+		System.out.println();
+	}
 	}
 
 	// int[] test = { 1, 2, 3, 4, 5, 6 };
