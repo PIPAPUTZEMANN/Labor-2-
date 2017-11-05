@@ -8,18 +8,16 @@ public class Lotto {
 		int k = 0;
 		boolean zustand = true;
 		int spieler = 0;
-		int geber=1;
-		
+		int geber = 1;
 
 		System.out.println("Anzahl der gewünschten Spieler eingeben!");
 		anzahlSpieler = In.readInt();
 		int[][] tabelle = new int[anzahlSpieler][8];
 		int[][] aa = new int[anzahlSpieler][6];
-		
+
 		for (int as = 0; as < anzahlSpieler; as++) {
 			System.out.println("Spieler " + (as + 1) + " bitte seinen Lottoschein ausfüllen!");
 			aa[as] = readPlayerTip(anzahlSpieler);
-			
 
 		}
 		System.out.println("Das Spiel läuft....Bitte warten!");
@@ -63,53 +61,42 @@ public class Lotto {
 			}
 
 		}
-		
-		
-		
-		for(int reihe=0;reihe<anzahlSpieler;reihe++){
-			
-			tabelle[reihe][0]=geber++;
-		
+
+		for (int reihe = 0; reihe < anzahlSpieler; reihe++) {
+
+			tabelle[reihe][0] = geber++;
+
 		}
-		
 
-	
-	
-		
-
-
-		System.out.println("Spieler     | 0 Richtige | 1 Richtig  | 2 Richtige | 3 Richtige | 4 Richtige | 5 Richtige | 6 Richtige |");
-		System.out.print("--------------------------------------------------------------------------------------------------------\n");
+		System.out.println(
+				"Spieler     | 0 Richtige | 1 Richtig  | 2 Richtige | 3 Richtige | 4 Richtige | 5 Richtige | 6 Richtige |");
+		System.out.print(
+				"--------------------------------------------------------------------------------------------------------\n");
 		for (int row = 0; row < tabelle.length; row++) {
 			for (int column = 0; column < tabelle[row].length; column++) {
-			
-				System.out.printf("%12d|",tabelle[row][column]);
+
+				System.out.printf("%12d|", tabelle[row][column]);
 			}
 
 			System.out.println();
 		}
-		
-		System.out.print("--------------------------------------------------------------------------------------------------------\n");
-		System.out.printf("Es musste %d gezogen werden bis ein Spieler gewonnen hat!\n",k);
+
+		System.out.print(
+				"--------------------------------------------------------------------------------------------------------\n");
+		System.out.printf("Es musste %d gezogen werden bis ein Spieler gewonnen hat!\n", k);
 		System.out.println("Spieler " + (spieler + 1) + " hat gewonnen!\n");
-		System.out.println("Die Lottozahlen lauten "+Arrays.toString(bubblesort(aktuelleLottoZahlen))+"!\n");
+		System.out.println("Die Lottozahlen lauten " + Arrays.toString(bubblesort(aktuelleLottoZahlen)) + "!\n");
 		for (int row = 0; row < aa.length; row++) {
-			System.out.println("Lottoschein von Spieler "+(row+1)+"!\n");
-		for (int column = 0; column < aa[row].length; column++) {
-			
-			System.out.print(aa[row][column] + "\t");
+			System.out.println("Lottoschein von Spieler " + (row + 1) + "!\n");
+			for (int column = 0; column < aa[row].length; column++) {
+
+				System.out.print(aa[row][column] + "\t");
+			}
+
+			System.out.println();
+			System.out.println();
 		}
-
-		System.out.println();
-		System.out.println();
 	}
-	}
-
-	// int[] test = { 1, 2, 3, 4, 5, 6 };
-	// System.out.println(drawLotteryNumber());
-	// System.out.println(Arrays.toString(drawLottery()));
-	// System.out.println(Arrays.toString(readPlayerTip()));
-	// System.out.println(checkPlayerTip(readPlayerTip(), test));
 
 	public static int drawLotteryNumber() {
 
@@ -214,7 +201,7 @@ public class Lotto {
 			int newn = 1;
 			for (int i = 0; i < n - 1; ++i) {
 				if (Lottozahlen[i] > Lottozahlen[i + 1]) {
-					// Werte der Arrays tauschen
+
 					buffer = Lottozahlen[i];
 					Lottozahlen[i] = Lottozahlen[i + 1];
 					Lottozahlen[i + 1] = buffer;
