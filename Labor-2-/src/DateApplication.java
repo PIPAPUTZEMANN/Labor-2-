@@ -71,7 +71,12 @@ public static void main(String[] args) {
 		
 	
 		    
-		    
+		Date localDate = new Date(31, 1, 2008);
+		System.out.println(localDate.toString());
+		Date testDate = localDate.nextDay();
+		System.out.println(testDate.toString());
+		System.out.println(testDate.isValidDate(31, 1, 2008));
+		
 		    
 
 		
