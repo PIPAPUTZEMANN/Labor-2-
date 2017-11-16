@@ -118,7 +118,7 @@ if(aktuelleAnzahl<size){
 	* the copy contains copies of the original elements (not the original
 	* elements themselves)
 	*
-	* @return a deep copy of this DateFIFO Object
+	* @return a deep copy of this DateFIFO Object.
 	*/
 	public DateFIFO deepCopy(){
 		
