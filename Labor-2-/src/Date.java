@@ -205,21 +205,21 @@ public class Date {
 	}
 
 	public boolean equals(Object other) {
+		if(other instanceof Date){
+		Date rek= new Date();
+		rek=(Date) other;
 		
-		
-		
-		if(other==null){
+		if(this.day==rek.day && this.month==rek.month && this.year==rek.year){
 			
-			return false;
+			return true;
 		}
 		
-		if(other==this){
-			
-		return	true;
+		
+		
+
+
+
 		}
 		return false;
-
-
-
 }
 }
