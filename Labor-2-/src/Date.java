@@ -2,7 +2,7 @@
 public class Date {
 
 	private int day;
-	private int month;
+	private	int month;
 	private int year;
 	static int anzahlObjekte;
 
@@ -222,4 +222,14 @@ public class Date {
 		}
 		return false;
 }
+	public int getDay(){
+		return day;
+	}
+	public int getMonth(){
+		return month;
+	}
+	public int getYear(){
+		return year;
+	}
+	
 }
