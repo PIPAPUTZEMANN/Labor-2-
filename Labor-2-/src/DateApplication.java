@@ -77,8 +77,18 @@ public static void main(String[] args) {
 		System.out.println(testDate.toString());
 		System.out.println(testDate.isValidDate(31, 1, 2008));
 		
-		    
-
+		
+		
+		System.out.println(test14.toString());
+		System.out.println(test14.getWeekday().getGermanName());
+		System.out.println("");
+		
+		
+		
+		
+		System.out.println(test1.getNumberOfDateObjects());
+		
+		System.out.println(test1.toString().equals(test5.toString()));
 		
 		
 	}

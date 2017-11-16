@@ -4,16 +4,19 @@ public class Date {
 	private int day;
 	private int month;
 	private int year;
+	static int anzahlObjekte;
 
 	public Date() {
 
 		setDate(1, 1, 1970);
+		anzahlObjekte++;
 	}
 
 	public Date(int day, int month, int year) {
 
 		this();
 		setDate(day, month, year);
+		
 
 	}
 
@@ -24,7 +27,9 @@ public class Date {
 		if (other != null) {
 
 			setDate(other.day, other.month, other.year);
+			
 		}
+
 	}
 
 	public boolean setDate(int day, int month, int year) {
@@ -139,5 +144,82 @@ public class Date {
 			return new Date(1, 1, year + 1);
 		}
 	}
+	
+	public Day getWeekday() {
 
+		Day dayEnum = null;
+		int w;
+
+		if (month < 3) {
+
+			month = month + 12;
+			year = year - 1;
+		}
+
+		w = (day + 2 * month + (3 * month + 3) / 5 + year + year / 4 - year / 100 + year / 400 + 1) % 7;
+
+		switch (w) {
+
+		case 0:
+			dayEnum = Day.SUNDAY;
+			break;
+
+		case 1:
+			dayEnum = Day.MONDAY;
+			break;
+
+		case 2:
+			dayEnum = Day.TUESDAY;
+			break;
+
+		case 3:
+			dayEnum = Day.WEDNESDAY;
+			break;
+
+		case 4:
+			dayEnum = Day.THURSDAY;
+			break;
+
+		case 5:
+			dayEnum = Day.FRIDAY;
+			break;
+
+		case 6:
+			dayEnum = Day.SATURDAY;
+			break;
+
+		}
+		return dayEnum;
+
+	}
+
+	public static int getNumberOfDateObjects() {
+		return anzahlObjekte;
+
+	}
+
+	public void finalize() {
+
+		anzahlObjekte--;
+
+	}
+
+	public boolean equals(Object other) {
+		
+		
+		
+		if(other==null){
+			
+			return false;
+		}
+		
+		if(other==this){
+			
+		return	true;
+		}
+		return false;
+
+
+
+}
 }
