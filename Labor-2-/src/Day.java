@@ -1,6 +1,12 @@
 
 public enum Day { SUNDAY, MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY;
 	
+	/**
+	 * Determined german weekday.
+	 * We get the English weekday from date  and can find the German here.
+	 * 
+	 * @return returns german weekday.
+	 */
 	public String getGermanName(){
 		
 		String day = null;

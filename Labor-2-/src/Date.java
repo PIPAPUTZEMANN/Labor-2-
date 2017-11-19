@@ -1,4 +1,8 @@
-
+/**
+ * 
+ * @author Sebastian Brenner
+ *
+ */
 public class Date {
 
 	private int day;
@@ -6,12 +10,25 @@ public class Date {
 	private int year;
 	static int anzahlObjekte;
 
+	
+	/**
+	 * Creates a new Date object with date 1.1.1970.
+	 * Use the setDate method for this.
+	 */
 	public Date() {
 
 		setDate(1, 1, 1970);
 		anzahlObjekte++;
 	}
 
+	/**
+	 * Creates a new Date object with the given values ​​as date.
+	 * 1.1.1970, if the values ​​do not represent a valid date.
+	 * 
+	 * @param day  Day of the Date.
+	 * @param month Month of the Date.
+	 * @param year Year of the Date.
+	 */
 	public Date(int day, int month, int year) {
 
 		this();
@@ -19,7 +36,13 @@ public class Date {
 		
 
 	}
-
+	
+	/**
+	 * Creates a new Date object from an existing Date object.
+	 *  A copy will be made.
+	 * 
+	 * @param other the Date object to be copied.
+	 */
 	public Date(Date other) {
 
 		this();
@@ -32,6 +55,15 @@ public class Date {
 
 	}
 
+	/**
+	 * Sets the date of this Date object to the passed values.
+	 * If they do not represent a valid date, nothing is done and false is returned.
+	 * 
+	 * @param day the day on which the date should be set.
+	 * @param month the month on which the date should be set.
+	 * @param year the year on which the date should be set.
+	 * @return true if the date has been reset, otherwise false.
+	 */
 	public boolean setDate(int day, int month, int year) {
 
 		if (isValidDate(day, month, year)) {
@@ -47,6 +79,16 @@ public class Date {
 		}
 	}
 
+	/**
+	 * Checks whether the transferred values ​​correspond to a valid date.
+	 * This method can / should be static because it does not refer to a specific object.
+	 * 
+	 * 
+	 * @param day delivered day.
+	 * @param month delivered month.
+	 * @param year delivered year.
+	 * @return true if the values ​​are valid dates, false otherwise.
+	 */
 	public boolean isValidDate(int day, int month, int year) {
 
 		boolean valid = true;
@@ -109,10 +151,23 @@ public class Date {
 		return valid;
 	}
 
+	/**
+	 * Returns the date of this Date object as a string.
+	 * Format is "dd.mm.yyyy".
+	 * 
+	 * @return formatted string is returned.
+	 */
 	public String toString() {
 		return String.format("%02d.%02d.%04d", day, month, year);
 	}
 
+	/**
+	 * Checks if the date of this Date object is before the date of the submitted Date object.
+	 * The other object because you created above.
+	 * 
+	 * @param otherDate the Date object to compare with.
+	 * @return true if that date is ahead of the other.
+	 */
 	public boolean isBefore(Date otherDate) {
 		boolean iB = false;
 
@@ -135,6 +190,12 @@ public class Date {
 		return iB;
 	}
 
+	/**
+	 * Returns a new Date object.
+	 * The date will be one day later than the date of this object.
+	 * 
+	 * @return Date object with a day later date
+	 */
 	public Date nextDay() {
 		if (isValidDate(day + 1, month, year)) {
 			return new Date(day + 1, month, year);
@@ -145,6 +206,12 @@ public class Date {
 		}
 	}
 	
+	/**
+	 * Determines the weekday.
+	 * And works with an enum together.
+	 * 
+	 * @return returns the German day of the week.
+	 */
 	public Day getWeekday() {
 
 		Day dayEnum = null;
@@ -193,17 +260,33 @@ public class Date {
 
 	}
 
+	/**
+	 * Counts the number of create objects.
+	 * With a static class variable.
+	 * 
+	 * @return returns number of create objects.
+	 */
 	public static int getNumberOfDateObjects() {
 		return anzahlObjekte;
 
 	}
 
+	/**
+	 *Deletes objects that are no longer used. 
+	 * 
+	 */
 	public void finalize() {
 
 		anzahlObjekte--;
 
 	}
 
+	/**
+	 * Compares objects whether they are the same.
+	 * And say true if they are the same.
+	 * 
+	 * @return return true or false.
+	 */
 	public boolean equals(Object other) {
 		if(other instanceof Date){
 		Date rek= new Date();
