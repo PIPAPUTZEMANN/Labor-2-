@@ -124,6 +124,9 @@ if(aktuelleAnzahl<size){
 		
 		DateFIFO copy = new DateFIFO(size);
 		
+		
+	
+		
 		copy.size=this.size;
 		copy.aktuelleAnzahl=this.aktuelleAnzahl;
 		copy.elements=this.elements;
